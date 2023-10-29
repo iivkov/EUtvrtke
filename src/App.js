@@ -5,11 +5,54 @@ import Footer from './components/Footer'
 import HomeComponent from "./components/HomeComponent";
 import AboutComponent from './components/AboutComponent';
 import ContactComponent from './components/ContactComponent';
+import Accessibility from './components/Accessibility';
+import React, { useState } from 'react';
 
 function App() {
+  // const [fontSize, setFontSize] = useState(16);
+  // const [grayscale, setGrayscale] = useState(false);
+  // const [highContrast, setHighContrast] = useState(false);
+
+  // const increaseFontSize = () => {
+  //   if (fontSize * 1.15 <= 96) {
+  //     setFontSize(prevFontSize => prevFontSize * 1.15);
+  //   }
+  // };
+
+  // const decreaseFontSize = () => {
+  //   if (fontSize * 0.9 >= 16) {
+  //     setFontSize(prevFontSize => prevFontSize * 0.9);
+  //   }
+  // };
+
+  // const resetFontSize = () => {
+  //   setFontSize(16);
+  //   setGrayscale(false);
+  //   setHighContrast(false);
+  // };
+
+  // const toggleGrayscale = () => {
+  //   setGrayscale(prevGrayscale => !prevGrayscale);
+  // };
+
+  // const toggleHighContrast = () => {
+  //   setHighContrast(prevHighContrast => !prevHighContrast);
+  // };
+
+
   return (
-    <>
+    // <div className={`App ${grayscale ? 'grayscale' : ''} ${highContrast ? 'high-contrast' : ''}`}>
+    < >
       <BrowserRouter>
+      {/* <Accessibility
+        increaseFontSize={increaseFontSize}
+        decreaseFontSize={decreaseFontSize}
+        resetFontSize={resetFontSize}
+        toggleGrayscale={toggleGrayscale}
+        toggleHighContrast={toggleHighContrast}
+        grayscale={grayscale}
+        highContrast={highContrast}
+      /> */}
         <Navbar />
         <Routes>
           <Route path="/" exact element={<HomeComponent />} />
@@ -20,6 +63,7 @@ function App() {
         </Routes>
         <Footer />
 		  </BrowserRouter>
+    {/* </div> */}
     </>
   );
 }

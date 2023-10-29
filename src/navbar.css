@@ -107,9 +107,30 @@ body {
 }
 
 .footer {
-  height: 200px;
+  height: 250px;
   display: flex;
   background-color: #fef7e5;
   position: relative;
+  /* text-align: center; */
+
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.container2 {
+  max-width: 1100px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  height: 100%;
+}
+
+/* .address {
+  font-style: italic;
+} */
+
+.copyright {
   text-align: center;
+  flex-basis: 100%;
 }
