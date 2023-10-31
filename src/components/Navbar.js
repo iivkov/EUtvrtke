@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as Hamburger } from '../assets/hamburger.svg'
-// import { ReactComponent as Brand } from '../assets/logo.svg'
-import Brand from './Brand'
-import '../navbar.css'
-import Accessibility from './Accessibility'
+import Logo from '../assets/logo.svg';
+import '../App.css';
 
-const Navbar = () => {
+const Navbar = ({ highContrast }) => {
   const [showNavbar, setShowNavbar] = useState(false)
 
   const handleShowNavbar = () => {
@@ -14,35 +12,37 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="logo">
-          <Brand />
-        </div>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          <Hamburger />
-        </div>
-        <div className={`nav-elements  ${showNavbar && 'active'}`}>
-          <ul>
-            <li>
-              <NavLink to="/">Početna</NavLink>
-            </li>
-            <li>
-              <NavLink to="/o-nama">O nama</NavLink>
-            </li>
-            <li>
-              <NavLink to="/blog">Blog</NavLink>
-            </li>
-            <li>
-              <NavLink to="/projects">Projects</NavLink>
-            </li>
-            <li>
-              <NavLink to="/kontakt">Kontakt</NavLink>
-            </li>
-          </ul>
-        </div>
+  <nav className="navbar">
+    <div className="navbar-container">
+      <div className="logo">
+        <a href="/" rel="noopener noreferrer">
+          <div><img src={Logo} alt="Logotip" /></div>
+        </a>
       </div>
-    </nav>
+    <div className="menu-icon" onClick={handleShowNavbar}>
+        <Hamburger />
+    </div>
+    <div className={`nav-elements  ${showNavbar && 'active'}`}>
+      <ul>
+        <li>
+          <NavLink to="/">Početna</NavLink>
+        </li>
+        <li>
+          <NavLink to="/o-nama">O nama</NavLink>
+        </li>
+        <li>
+          <NavLink to="/djelatnosti">Djelatnosti</NavLink>
+        </li>
+        <li>
+          <NavLink to="/projekti">Projekti</NavLink>
+        </li>
+        <li>
+          <NavLink to="/kontakt">Kontakt</NavLink>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
   )
 }
 

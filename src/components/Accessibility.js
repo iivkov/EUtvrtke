@@ -1,32 +1,32 @@
 import React from 'react';
 
 const Accessibility = ({
-  increaseFontSize,
-  decreaseFontSize,
-  resetFontSize,
-  toggleGrayscale,
-  toggleHighContrast,
-  grayscale,
-  highContrast,
+    increaseFontSize,
+    decreaseFontSize,
+    resetFontSize,
+    toggleGrayscale,
+    toggleHighContrast,
+    grayscale,
+    highContrast,
 }) => {
-  return (
-    <div className='izbornik'>
+    return (
+    <div className='accessibility-menu'>
         <details>
-      <summary>INV</summary>
-      <div className="inv-buttons">
-        <button onClick={increaseFontSize}>Povećaj tekst</button>
-        <button onClick={decreaseFontSize}>Smanji tekst</button>
-        <button onClick={resetFontSize}>Resetiraj tekst</button>
-        <button onClick={toggleGrayscale}>
-          {grayscale ? 'Isključi Grayscale' : 'Uključi Grayscale'}
-        </button>
-        <button onClick={toggleHighContrast}>
-          {highContrast ? 'Isključi Kontrast' : 'Uključi Kontrast'}
-        </button>
-      </div>
-    </details>
+            <summary>Pristupačnost</summary>
+            <i class='fas fa-universal-access' style={{color: "red"}}></i>
+            <div className="accessibility-buttons">
+                {/* <button onClick={increaseFontSize}>Povećaj tekst</button>
+                <button onClick={decreaseFontSize}>Smanji tekst</button> */}
+                <button onClick={toggleGrayscale}>
+                    {grayscale ? 'Isključi grayscale' : 'Uključi grayscale'}
+                </button>
+                <button onClick={toggleHighContrast}>
+                    {highContrast ? 'Isključi visoki kontrast' : 'Uključi visoki kontrast'}
+                </button>
+                <button onClick={resetFontSize}>Vrati početne postavke</button>
+            </div>
+        </details>
     </div>
-        
   );
 };
 
