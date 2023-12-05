@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as Hamburger } from '../assets/hamburger.svg'
 import Logo from '../assets/logo.svg';
+// import Logo from '../assets/medo_grupa-logo3-transparent.svg';
 import '../App.css';
 
 const Navbar = ({ highContrast }) => {

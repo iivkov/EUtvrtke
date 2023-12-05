@@ -1,18 +1,47 @@
-import React, {useState} from "react";
+import React, {useState, useRef } from "react";
 import '../App.css';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 const ContactComponent = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [subject, setSubject] = useState('');
-    const [message, setMessage] = useState('');
+    // const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [subject, setSubject] = useState('');
+    // const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const form = useRef();
+    const SERVICE_ID = "service_9qzvnm9";
+    const TEMPLATE_ID = "template_42h3ixv";
+    const PUBLIC_KEY = "JaqES2t07KyP4xRAt";
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     const mailtoLink = `mailto:ivan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`E-mail: ${email}\n\nPoruka:\n${message}`)}`;
+    //     window.location.href = mailtoLink;
+    // }
+    const sendEmail = (e) => {
         e.preventDefault();
-
-        const mailtoLink = `mailto:ivan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`E-mail: ${email}\n\nPoruka:\n${message}`)}`;
-        window.location.href = mailtoLink;
-    }
+        emailjs
+          .sendForm(
+            // SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY
+            SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY
+            // process.env.SERVICE_ID, process.env.TEMPLATE_ID, form.current, process.env.PUBLIC_KEY
+          )
+          .then(
+            (result) => {
+              alert('Poruka je uspješno poslana');
+            //   console.log(result.text);
+            //   Swal.fire({
+            //     icon: 'success',
+            //     title: 'Message Sent Successfully'
+            //   })
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
+      };
 
 	return (
     <div className="main_content">
@@ -21,22 +50,22 @@ const ContactComponent = () => {
         <div className="container">
         {/* <div> */}
             <div className="box">
-                <form class="contact" onSubmit={handleSubmit}>
+                <form class="contact" ref={form} onSubmit={sendEmail}>
                     <div>
                         <label style={{display: "block"}} htmlFor="name">Ime i prezime:</label>
-                        <input type="text" id="name" placeholder="Unesite svoje ime i prezime" value={name} onChange={(e) => setName(e.target.value)} required />
+                        <input type="text" id="name" name="user_name" placeholder="Unesite svoje ime i prezime" required />
                     </div>
                     <div>
                         <label style={{display: "block"}} htmlFor="email">E-pošta:</label>
-                        <input type="email" id="email" placeholder="Unesite svoju adresu e-pošte" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <input type="email" id="email" name="user_email" placeholder="Unesite svoju adresu e-pošte" required />
                     </div>
                     <div>
                         <label style={{display: "block"}} htmlFor="subject">Predmet:</label>
-                        <input type="text" id="subject" placeholder="Unesite predmet poruke" value={subject} onChange={(e) => setSubject(e.target.value)} required/>
+                        <input type="text" id="subject" name="user_subject" placeholder="Unesite predmet poruke" required/>
                     </div>
                     <div>
                         <label style={{display: "block"}} htmlFor="message">Poruka:</label>
-                        <textarea id="message" placeholder="Napišite svoju poruku" value={message} onChange={(e) => setMessage(e.target.value)} rows="8" required ></textarea>
+                        <textarea id="message" name="message" placeholder="Napišite svoju poruku" rows="8" required ></textarea>
                     </div>
                     <button className="submit_button" type="submit">Pošalji</button>
                 </form>
